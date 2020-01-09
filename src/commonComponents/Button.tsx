@@ -67,33 +67,22 @@ export default class Button extends React.Component<ButtonProps> {
 }
 
 const styles = StyleSheet.create({
-    button:Platform.select({
-        android:{
-            backgroundColor: '#2196F3',
+    button:{
+        backgroundColor: '#2196F3',
             borderRadius: 2,
-            elevation: 4, 
-        },
-        ios:{}
-    }),
-    buttonDisabled:Platform.select({
-        android:{
-            backgroundColor: '#dfdfdf',
+            elevation: 15, 
+    },
+    buttonDisabled:{
+        backgroundColor: '#dfdfdf',
             elevation: 0,
-        },
-        ios:{}
-    }),
+    },
     text:{
         padding:8,
         textAlign:'center',
         color:'white',
         fontWeight:'500'
     },
-    textDisabled:Platform.select({
-        android:{
-            color:'#a1a1a1',
-        },
-        ios:{
-            color:'#cdcdcd'
-        }
-    })
+    textDisabled:{
+        color:'#a1a1a1',
+    }
 });

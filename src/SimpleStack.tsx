@@ -1,4 +1,5 @@
 import * as React from "react";
+import {View} from  "react-native"
 import {
   NavigationActions,
   NavigationEventPayload,
@@ -40,6 +41,12 @@ class MyBackButton extends React.Component<BackButtonProps, any> {
 }
 
 const MyBackButtonWithNavigation: any = withNavigation(MyBackButton);
+// class ButtonForAll extends React.Component<MyNavScreenProps>{
+//     render(){
+//         const { navigation, banner } = this.props;
+//         const { push, replace, popToTop, pop, dismiss } = navigation;
+//     }
+// }
 
 class MyNavScreen extends React.Component<MyNavScreenProps> {
   render() {
@@ -49,7 +56,7 @@ class MyNavScreen extends React.Component<MyNavScreenProps> {
       <SafeAreaView forceInset={{ top: "never" }}>
         <SampleText>{banner}</SampleText>
         <Button
-          onPress={() => push("Profile", { name: "Jane" })}
+          onPress={() => push("Photos", { name: "Jane" })}
           title="Push a profile screen"
         />
         <Button
@@ -57,7 +64,7 @@ class MyNavScreen extends React.Component<MyNavScreenProps> {
           title="Navigate to a photos screen"
         />
         <Button
-          onPress={() => replace("Profile", { name: "Lucy" })}
+          onPress={() => replace("Photos", { name: "Lucy" })}
           title="Replace with profile"
         />
         <Button onPress={() => popToTop()} title="Pop to top" />
@@ -122,6 +129,7 @@ console.log("Component Will Mount of Home Screen");}
   };
   render() {
     const { navigation } = this.props;
+    {console.log("Render Home")}
     return <MyNavScreen banner="Home Screen" navigation={navigation} />;
   }
 }
@@ -131,11 +139,17 @@ class MyPhotosScreen extends React.Component<NavigationStackScreenProps> {
     headerLeft: () => <MyBackButtonWithNavigation />,
     title: "Photos"
   };
+  constructor(props){
+      super(props);
+      console.log("Constructor of Photos");
+  }
   s0: NavigationEventSubscription | null = null;
   s1: NavigationEventSubscription | null = null;
   s2: NavigationEventSubscription | null = null;
   s3: NavigationEventSubscription | null = null;
-
+  componentWillMount(){
+      console.log("Photos Screen will mount now");
+  }
   componentDidMount() {
     console.log("Component Did Mount of Photos Screen");
     this.s0 = this.props.navigation.addListener("willFocus", this.onWF);
@@ -165,6 +179,7 @@ class MyPhotosScreen extends React.Component<NavigationStackScreenProps> {
 
   render() {
     const { navigation } = this.props;
+    {console.log("render photo screen")}
     return (
       <MyNavScreen
         banner={`${navigation.getParam("name")}'s Photos`}
@@ -179,12 +194,16 @@ const MyProfileScreen = ({
 }: {
   navigation: NavigationStackProp;
 }) => (
-  <MyNavScreen
+    
+  <View>
+      {console.log("My Profile render")}
+      <MyNavScreen
     banner={`${
       navigation.getParam("mode") === "edit" ? "Now Editing " : ""
     }${navigation.getParam("name")}'s Profile`}
-    navigation={navigation}
-  />
+    navigation={navigation}/>
+  </View>
+  
 );
 
 MyProfileScreen.navigationOptions = (props: NavigationStackScreenProps) => {
@@ -213,13 +232,14 @@ const SimpleStack = createStackNavigator({
     screen: MyHomeScreen
   },
   Photos: {
-    path: "photos/:name",
+     path: "photos/:name",
     screen: MyPhotosScreen
   },
   Profile: {
-    path: "people/:name",
+     path: "people/:name",
     screen: MyProfileScreen
   }
-});
+}
+);
 
 export default SimpleStack;
