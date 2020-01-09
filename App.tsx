@@ -1,11 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Animated,
+  Image,
+  Platform,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+} from 'react-native';
+import {
+  NativeViewGestureHandler,
+  RectButton,
+} from 'react-native-gesture-handler';
+import {
+  SupportedThemes,
+  ThemeColors,
+  ThemeContext,
+  Themed,
+  createAppContainer,
+  SafeAreaView,
+} from 'react-navigation';
+import SimpleStack from './src/SimpleStack';
 
+const Navigation = createAppContainer(SimpleStack);
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <Navigation/>
   );
 }
 
