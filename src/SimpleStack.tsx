@@ -53,7 +53,7 @@ class MyNavScreen extends React.Component<MyNavScreenProps> {
     const { navigation, banner } = this.props;
     const { push, replace, popToTop, pop, dismiss } = navigation;
     return (
-      <SafeAreaView forceInset={{ top: "never" }}>
+      <SafeAreaView forceInset={{ top: "always" }}>
         <SampleText>{banner}</SampleText>
         <Button
           onPress={() => push("Photos", { name: "Jane" })}

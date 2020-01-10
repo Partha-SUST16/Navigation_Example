@@ -33,7 +33,7 @@ class MyNavScreen extends React.Component<MyNavScreenProps> {
     const { navigation, banner } = this.props;
     return (
       <ScrollView>
-        <SafeAreaView forceInset={{ horizontal: "always", vertical: "never" }}>
+        <SafeAreaView forceInset={{ horizontal: "always", vertical: "never" ,top:"always"}}>
           <SampleText>{banner}</SampleText>
           <Button
             onPress={() => navigation.navigate("Profile", { name: "Jordan" })}
