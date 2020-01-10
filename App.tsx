@@ -22,8 +22,10 @@ import {
   SafeAreaView,
 } from 'react-navigation';
 import SimpleStack from './src/SimpleStack';
+import Navigator  from "./app/Navigator/Navigator";
+import SwitchWithStacks from './src/SwitchWithStacks';
+const Navigation = createAppContainer(SwitchWithStacks);
 
-const Navigation = createAppContainer(SimpleStack);
 export default function App() {
   return (
     <Navigation/>
