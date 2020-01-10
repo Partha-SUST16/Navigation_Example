@@ -24,7 +24,9 @@ import {
 import SimpleStack from './src/SimpleStack';
 import Navigator  from "./app/Navigator/Navigator";
 import SwitchWithStacks from './src/SwitchWithStacks';
-const Navigation = createAppContainer(SwitchWithStacks);
+import SimpleTabsContainer from './src/SimpleTabs';
+import TabsInDrawer from './src/TabsInDrawer';
+const Navigation = createAppContainer(TabsInDrawer);
 
 export default function App() {
   return (
